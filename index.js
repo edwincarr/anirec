@@ -52,16 +52,14 @@ query($userName: String) {
   }
 }
 `
-const userVars = {
-  userName: "ghostcix"
-}
+
 const listVars = {
   id: 797175,
   chunk: 1
 }
 
 // query(userQuery, userVars).then(handleResponse).then(handleData).then(handleError);
-query(listQuery, listVars).then(handleResponse).then(handleData).then(handleError);
+// query(listQuery, listVars).then(handleResponse).then(handleData).then(handleError);
 
 function handleResponse(response) {
   return response.json().then(function(json){
@@ -74,4 +72,16 @@ function handleData(data) {
 function handleError(error) {
   alert('Error, check console');
   console.error(error)
+}
+
+const getInfo = async(event) => {
+  event.preventDefault();
+
+  //let list = document.getElementById("website-list").value;
+
+  const userVars = {
+    userName: document.getElementById("username").value
+  }
+
+  console.log(query(userQuery, userVars));
 }
