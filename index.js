@@ -69,9 +69,13 @@ function handleResponse(response) {
 function handleData(data) {
   console.log(data)
 }
-function handleError(error) {
-  alert('Error, check console');
-  console.error(error)
+// function handleError(error) {
+//   alert('Error, check console');
+//   console.error(error)
+// }
+
+const getChunk = (number, chunkSize)  => {
+  return Math.floor(number / chunkSize) + 1;
 }
 
 const getInfo = async(event) => {
@@ -83,5 +87,22 @@ const getInfo = async(event) => {
     userName: document.getElementById("username").value
   }
 
-  console.log(query(userQuery, userVars));
+  const result = await query(userQuery, userVars).then(e => e.json())
+  const userInf = result.data.User
+  console.log(result.data.User)
+  const lists = userInf.statistics.anime.statuses
+  let count;
+
+  for(let i = 0;i<lists.length;i++){
+    if(lists[i].status == "PLANNING"){
+      count = lists[i].count
+    }
+  }
+  const randAnimeId = Math.ceil(Math.random()*count)
+  const listVars = {
+    id: userInf.id,
+    chunk: getChunk(randAnimeId, 500)
+  }
+  const randAnime = await query(listQuery, listVars).then(e => e.json())
+  console.log(randAnime)
 }
