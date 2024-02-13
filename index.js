@@ -53,19 +53,6 @@ query($userName: String) {
 }
 `
 
-function handleResponse(response) {
-  return response.json().then(function(json){
-    return response.ok ? json : Promise.reject(json);
-  });
-}
-function handleData(data) {
-  console.log(data)
-}
-// function handleError(error) {
-//   alert('Error, check console');
-//   console.error(error)
-// }
-
 const getChunk = (number, chunkSize)  => {
   return Math.floor(number / chunkSize) + 1;
 }
@@ -100,7 +87,7 @@ const getInfo = async(event) => {
     id: userInf.id,
     chunk: getChunk(randAnimeId, 500)
   }
-  
+
   const randAnime = await query(listQuery, listVars).then(e => e.json())
   console.log(randAnime)
 }
