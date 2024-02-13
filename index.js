@@ -1,21 +1,3 @@
-const query = async(query, variables) => {
-
-  const url = "https://graphql.anilist.co"
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      query: query,
-      variables: variables
-    })
-  }
-
-  return fetch(url, options)
-}
-
 const listQuery = `
 query($id: Int, $chunk: Int) {
   MediaListCollection(userId: $id, status_in:PLANNING, perChunk: 500, chunk:$chunk, type:ANIME){
@@ -37,6 +19,7 @@ query($id: Int, $chunk: Int) {
   }
 }
 `
+const listVars = {}
 const userQuery = `
 query($userName: String) {
   User(name:$userName){
@@ -52,11 +35,29 @@ query($userName: String) {
   }
 }
 `
+const userVars = {}
+
+const query = async(query, variables) => {
+
+  const url = "https://graphql.anilist.co"
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: variables
+    })
+  }
+
+  return fetch(url, options)
+}
 
 const getChunk = (number, chunkSize)  => {
   return Math.floor(number / chunkSize) + 1;
 }
-
 
 //main function
 const getInfo = async(event) => {
@@ -64,9 +65,7 @@ const getInfo = async(event) => {
 
   //let list = document.getElementById("website-list").value;
 
-  const userVars = {
-    userName: document.getElementById("username").value
-  }
+  userVars.userName = document.getElementById("username").value
 
   const result = await query(userQuery, userVars).then(e => e.json())
 
@@ -83,10 +82,8 @@ const getInfo = async(event) => {
 
   const randAnimeId = Math.ceil(Math.random()*count)
 
-  const listVars = {
-    id: userInf.id,
-    chunk: getChunk(randAnimeId, 500)
-  }
+  listVars.id = userInf.id
+  listVars.chunk = getChunk(randAnimeId, 500)
 
   const randAnime = await query(listQuery, listVars).then(e => e.json())
   console.log(randAnime)
