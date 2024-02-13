@@ -7,21 +7,31 @@
   <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
-<body>
-  <header>
-    <h1>Ani-Rec</h1>
+<body class="">
+  
+  <!-- Title -->
+  <header class="flex justify-center pt-6 pb-6">
+    <h1 class="text-[45px]">ANI-REC</h1>
   </header>
 
-  <div>
-    <select>
-      <option value="AniList" >AniList</option>
-      <option value="MAL" >My Anime List</option>
+
+  <!-- Dropdown Div -->
+  <div class="flex justify-center pb-6 ">
+    <select class="rounded-lg border cursor-pointer border-[#949596] px-5">
+      <option value="aniList" >AniList</option>
+      <option value="mal" >My Anime List</option>
     </select>
   </div>
 
-  <div>
-    <input type="text"
+  <!-- Username and searchbutton Div -->
+  <div class="flex justify-center">
+    <form>
+    <input type="text" placeholder="Username" class="rounded-lg border border-[#949596] px-5" >
+    <button value="Submit" class="rounded-lg border border-[#949596] px-5 hover:bg-[#3CA1D5] hover:text-white hover:border-transparent hover:duration-500">Button</button>
+  </form>
   </div>
+
+
 <script src="index.js"></script>
 </body>
 </html>
