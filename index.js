@@ -53,14 +53,6 @@ query($userName: String) {
 }
 `
 
-const listVars = {
-  id: 797175,
-  chunk: 1
-}
-
-// query(userQuery, userVars).then(handleResponse).then(handleData).then(handleError);
-// query(listQuery, listVars).then(handleResponse).then(handleData).then(handleError);
-
 function handleResponse(response) {
   return response.json().then(function(json){
     return response.ok ? json : Promise.reject(json);
@@ -78,8 +70,10 @@ const getChunk = (number, chunkSize)  => {
   return Math.floor(number / chunkSize) + 1;
 }
 
+
+//main function
 const getInfo = async(event) => {
-  event.preventDefault();
+  event.preventDefault(); //prevents website from reloading after form submitting
 
   //let list = document.getElementById("website-list").value;
 
@@ -88,8 +82,9 @@ const getInfo = async(event) => {
   }
 
   const result = await query(userQuery, userVars).then(e => e.json())
+
   const userInf = result.data.User
-  console.log(result.data.User)
+  console.log(userInf)
   const lists = userInf.statistics.anime.statuses
   let count;
 
@@ -98,11 +93,14 @@ const getInfo = async(event) => {
       count = lists[i].count
     }
   }
+
   const randAnimeId = Math.ceil(Math.random()*count)
+
   const listVars = {
     id: userInf.id,
     chunk: getChunk(randAnimeId, 500)
   }
+  
   const randAnime = await query(listQuery, listVars).then(e => e.json())
   console.log(randAnime)
 }
