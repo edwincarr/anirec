@@ -17,8 +17,8 @@ const query = async(query, variables) => {
 }
 
 const listQuery = `
-query($id: Int) {
-  MediaListCollection(userId: $id, status_in:PLANNING, perChunk: 500, chunk:1, type:ANIME){
+query($id: Int, $chunk: Int) {
+  MediaListCollection(userId: $id, status_in:PLANNING, perChunk: 500, chunk:$chunk, type:ANIME){
     lists{
       name
       entries {
@@ -52,11 +52,16 @@ query($userName: String) {
   }
 }
 `
-const names = {
+const userVars = {
   userName: "ghostcix"
 }
+const listVars = {
+  id: 797175,
+  chunk: 1
+}
 
-query(userQuery, names).then(handleResponse).then(handleData).then(handleError);
+// query(userQuery, userVars).then(handleResponse).then(handleData).then(handleError);
+query(listQuery, listVars).then(handleResponse).then(handleData).then(handleError);
 
 function handleResponse(response) {
   return response.json().then(function(json){
