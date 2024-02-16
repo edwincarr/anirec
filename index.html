@@ -7,18 +7,18 @@
   <link rel="stylesheet" href="styles.css">
   <title>Document</title>
 </head>
-<body class="">
+<body class="bg-[#252525]">
 
   <!-- Title -->
   <header class="flex justify-center pt-6 pb-6">
-    <h1 class="text-[45px]">ANI-REC</h1>
+    <h1 class="text-[45px] text-white hover:text-[#3CA1D5] hover:duration-500">ANI-REC</h1>
   </header>
 
 
   <!-- Dropdown Div -->
   <div class="flex justify-center pb-6 ">
   <form id="username-form" onSubmit="getInfo(event)">
-    <select id="website-list"  class="rounded-lg border cursor-pointer border-[#949596] px-5" required>
+    <select id="website-list"  class="rounded-lg border cursor-pointer border-[#949596] px-5 " required>
       <option value="aniList" >AniList</option>
       <option value="mal" >My Anime List</option>
     </select>
@@ -27,7 +27,7 @@
   <!-- Username and searchbutton Div -->
   <div class="flex justify-center">
     <input type="text" id="username"  placeholder="Username" class="rounded-lg border border-[#949596] px-5" required>
-    <button value="Submit" class="rounded-lg border border-[#949596] px-5 hover:bg-[#3CA1D5] hover:text-white hover:border-transparent hover:duration-500">Button</button>
+    <button value="Submit" class="bg-white text-[#252525] rounded-lg border border-[#949596] px-5 hover:bg-[#3CA1D5] hover:text-white hover:border-transparent hover:duration-500">Button</button>
   </form>
   </div>
 
