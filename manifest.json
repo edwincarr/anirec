@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "AniRec",
+  "description": "Anime recomendation Extension",
+  "version": "0.5",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "anirec_img.png"
+  }
+}
