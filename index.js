@@ -7,7 +7,7 @@ query($id: Int, $chunk: Int) {
         media {
           id
           title {
-            userPreferred
+            english
           }
           description
           coverImage{
@@ -20,6 +20,7 @@ query($id: Int, $chunk: Int) {
 }
 `
 const listVars = {}
+
 const userQuery = `
 query($userName: String) {
   User(name:$userName){
@@ -38,7 +39,6 @@ query($userName: String) {
 const userVars = {}
 
 const query = async(query, variables) => {
-
   const url = "https://graphql.anilist.co"
   const options = {
     method: "POST",
@@ -63,16 +63,26 @@ const getChunk = (number, chunkSize)  => {
 const getInfo = async(event) => {
   event.preventDefault(); //prevents website from reloading after form submitting
 
-  //let list = document.getElementById("website-list").value;
-
   userVars.userName = document.getElementById("username").value
 
-  const result = await query(userQuery, userVars).then(e => e.json())
+  const userResult = await query(userQuery, userVars).then(e => e.json())
 
-  const userInf = result.data.User
-  console.log(userInf)
-  const lists = userInf.statistics.anime.statuses
-  let count;
+  const user = userResult.data.User
+  const randomID = getRandomID(user)
+
+  listVars.id = user.id
+  listVars.chunk = getChunk(randomID, 500)
+
+  const animeResult = await query(listQuery, listVars).then(e => e.json())
+  const animeRecommendation = animeResult.data.MediaListCollection.lists[0].entries[randomID].media
+
+  console.log(animeRecommendation)
+  return animeRecommendation
+}
+
+const getRandomID = (userInformation) => {
+  let count
+  const lists = userInformation.statistics.anime.statuses
 
   for(let i = 0;i<lists.length;i++){
     if(lists[i].status == "PLANNING"){
@@ -80,11 +90,5 @@ const getInfo = async(event) => {
     }
   }
 
-  const randAnimeId = Math.ceil(Math.random()*count)
-
-  listVars.id = userInf.id
-  listVars.chunk = getChunk(randAnimeId, 500)
-
-  const randAnime = await query(listQuery, listVars).then(e => e.json())
-  console.log(randAnime)
+  return Math.ceil(Math.random()*count)
 }
