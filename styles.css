@@ -9,8 +9,6 @@ body {
   font-family: 'Overpass', sans-serif;
   height: 500px;
   width: 350px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 .header {
