@@ -3,13 +3,12 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Overpass', sans-serif;
 }
 
 .header {
   display: flex;
   justify-content: center;
-  padding-top: 6px;
-  padding-bottom: 6px;
 }
 
 .title-text {
@@ -26,23 +25,25 @@ body {
 .dropdown-div {
   display: flex;
   justify-content: center;
-  padding-bottom: 6px;
+  padding-bottom: 12px;
+  
 }
 
 .dropdown-select{
+  font-size: 16px;
   border-radius: 8px;
   border-width: 1px;
   border-style: solid;
   border-color: #949596;
   cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 2px 25px;
 }
 
 .username-div {
   display: flex;
   justify-content: center;
   gap: 16px;
+  height: 26px;
 }
 
 .userName-input{
@@ -50,8 +51,7 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: #949596;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 1px 26px;
 }
 
 .submit-button {
@@ -61,8 +61,8 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: #949596;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 1px 24.5px;
+  margin: 1px 16px;
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
   cursor: pointer;
 }
