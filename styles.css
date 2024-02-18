@@ -4,6 +4,8 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Overpass', sans-serif;
+  height: 500px;
+  width: 350px;
 }
 
 .header {
@@ -51,7 +53,7 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: #949596;
-  padding: 1px 26px;
+  padding: 1px 15px;
 }
 
 .submit-button {
@@ -61,8 +63,7 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: #949596;
-  padding: 1px 24.5px;
-  margin: 1px 16px;
+  padding: 1px 15px;
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
   cursor: pointer;
 }
