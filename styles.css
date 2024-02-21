@@ -1,21 +1,25 @@
 html {
   background-color: maroon;
 }
+
+/* Styling to body of extention */
 body {
   background-color: #252525;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Overpass', sans-serif;
+  font-family: 'Overpass';
   height: 500px;
   width: 350px;
 }
 
+/* Styles area around title */
 .header {
   display: flex;
   justify-content: center;
 }
 
+/* Styles title text */
 .title-text {
   font-size: 45px;
   color: white;
@@ -23,63 +27,74 @@ body {
   cursor: pointer;
 }
 
+/* Styles when hovering over title text */
 .title-text:hover {
   color: #3ca1d5;
 }
 
-.dropdown-div {
+/* Styles area around dropdown */
+.dropdown {
   display: flex;
   justify-content: center;
   padding-bottom: 12px;
-
 }
 
+/* Styles dropdown contents*/
 .dropdown-select{
+  background-color: hsl(0, 0%, 20%);
+  color: white;
   font-size: 16px;
   border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #949596;
+  border: 2px hsl(0, 0%, 20%) solid;
   cursor: pointer;
   padding: 2px 25px;
 }
 
-.username-div {
+/* Styles when hovering over dropdown */
+.dropdown-select:hover {
+  background-color: hsl(0, 0%, 30%);
+}
+
+/* Styles around username and button area */
+.username {
   display: flex;
   justify-content: center;
   gap: 16px;
   height: 26px;
 }
 
-.userName-input{
+/* Styles username input field */
+.username input{
+  background-color: hsl(0, 0%, 20%);
+  color: white;
   border-radius: 8px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #949596;
+  border: 2px hsl(0, 0%, 20%) solid;
   padding: 1px 15px;
 }
 
-.submit-button {
-  background-color: #fff;
-  color: #252525;
+/* Styles the placeholder of username input field */
+.username input::placeholder{
+  color: white;
+  opacity: .6;
+}
+
+/* Styles when hovering over username input field */
+.username input:hover{
+  background-color: hsl(0, 0%, 30%);
+}
+
+/* Styles button in username div */
+.username button {
+  background-color: hsl(0, 0%, 20%);
+  color: white;
   border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #949596;
+  border: 2px hsl(0, 0%, 20%) solid;
   padding: 1px 15px;
-  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
   cursor: pointer;
 }
 
-.submit-button:hover{
-  background-color: #3ca1d5;
-  color: #fff;
-  border-color: transparent;
-  padding: 2px 18px;
-  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+/* Styles when hovering over button in username div */
+.username button:hover{
+  background-color: hsl(0, 0%, 30%);
 }
 
-.submit-button:active{
-  padding: 3px 20px;
-  background-color: hsl(200, 65%, 84%);
-}
