@@ -1,0 +1,25 @@
+<body>
+  <!-- Title -->
+  <header class="header">
+    <h1 class="title-text">ANI-REC</h1>
+  </header>
+
+  <!-- Dropdown Div -->
+  <form id="username-form" onsubmit="searchConstructor(event)">
+    <div class="dropdown">
+      <select id="website-list"  class="dropdown-select" required>
+        <option value="aniList" >AniList</option>
+        <option value="mal" >My Anime List</option>
+      </select>
+    </div>
+
+  <!-- Username and searchbutton Div -->
+    <div class="username">
+      <input type="text" id="username"  placeholder="Username" required>
+      <button value="Submit" >Submit</button>
+    </div>
+  </form>
+
+
+<script src="index.js" type="module"></script>
+</body>

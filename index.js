@@ -1,3 +1,5 @@
+import animePageRender from "./view.js"
+
 const listQuery = `
 query($id: Int, $chunk: Int) {
   MediaListCollection(userId: $id, status_in:PLANNING, perChunk: 500, chunk:$chunk, type:ANIME){
@@ -91,4 +93,9 @@ const getRandomID = (userInformation) => {
   }
 
   return Math.ceil(Math.random()*count)
+}
+
+const searchConstructor = async (event) => {
+  const animeInformation = await getInfo(event)
+  animePageRender(animeInformation)
 }
