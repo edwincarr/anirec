@@ -16,7 +16,7 @@
 
     <!-- Dropdown Div -->
     <div class="dropdown">
-      <form id="username-form" onSubmit="getInfo(event)">
+      <form id="username-form" >
         <select id="website-list"  class="dropdown-select" required>
           <option value="aniList" >AniList</option>
           <option value="mal" >My Anime List</option>
@@ -26,12 +26,15 @@
       <!-- Username and searchbutton Div -->
       <div class="username">
         <input type="text" id="username"  placeholder="Username" required>
-        <button value="Submit"><a href="#test">submit</a></button>
+        <button value="Submit" id="button">Submit</button>
       </form>
     </div>
   </div>
-  <div id="test">Test</div>
-  <a href="#search">search</a>
+  <div id="result">
+    <h1 id="animeTitle"></h1>
+    <button><a href="#search">New Anime</a></button>
+  </div>
+
 
 
 <script src="index.js"></script>

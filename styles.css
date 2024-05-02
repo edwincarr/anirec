@@ -88,12 +88,13 @@ body {
 }
 
 /* Styles button in username div */
-.username button {
+button {
   background-color: hsl(0, 0%, 20%);
   color: white;
   border-radius: 8px;
   border: 2px hsl(0, 0%, 20%) solid;
-  padding: 1px 15px;
+  padding: 0 10px;
+  height: 27px;
   cursor: pointer;
 }
 
@@ -107,4 +108,8 @@ body {
 .username button:active{
   background-color: hsl(0, 0%, 40%);
   border-color: hsl(0, 0%, 40%);
+}
+
+button > a {
+  all: unset;
 }

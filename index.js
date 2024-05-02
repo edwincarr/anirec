@@ -56,7 +56,7 @@ const query = async(query, variables) => {
 }
 
 const getChunk = (number, chunkSize)  => {
-  return Math.floor(number / chunkSize) + 1;
+  return Math.floor(number / chunkSize);
 }
 
 //main function
@@ -74,6 +74,7 @@ const getInfo = async(event) => {
   listVars.chunk = getChunk(randomID, 500)
 
   const animeResult = await query(listQuery, listVars).then(e => e.json())
+  console.log(randomID)
   const animeRecommendation = animeResult.data.MediaListCollection.lists[0].entries[randomID].media
 
   console.log(animeRecommendation)
@@ -83,7 +84,7 @@ const getInfo = async(event) => {
 const getRandomID = (userInformation) => {
   let count
   const lists = userInformation.statistics.anime.statuses
-
+  console.log(lists)
   for(let i = 0;i<lists.length;i++){
     if(lists[i].status == "PLANNING"){
       count = lists[i].count
@@ -92,3 +93,17 @@ const getRandomID = (userInformation) => {
 
   return Math.ceil(Math.random()*count)
 }
+
+let button = document.getElementById('button')
+
+const main = async (e) => {
+  const {id, title, description, coverImage} = await getInfo(e)
+  const animeTitle = document.getElementById('animeTitle')
+  animeTitle.innerHTML = title.english
+
+}
+
+button.addEventListener('click', async(e) =>{
+  await main(e)
+  window.location.assign('/#result');
+})
