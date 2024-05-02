@@ -1,16 +1,20 @@
 html {
-  background-color: maroon;
+  background-color: #252525;
 }
 
 /* Styling to body of extention */
 body {
-  background-color: #252525;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Overpass';
-  height: 500px;
   width: 350px;
+  height: 500px;
+  overflow: hidden;
+}
+
+#search {
+  height: 500px;
 }
 
 /* Styles area around title */
@@ -104,4 +108,3 @@ body {
   background-color: hsl(0, 0%, 40%);
   border-color: hsl(0, 0%, 40%);
 }
-
