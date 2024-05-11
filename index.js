@@ -7,7 +7,8 @@ query($id: Int, $chunk: Int) {
         media {
           id
           title {
-            english
+            english,
+            romaji
           }
           description
           coverImage{
@@ -97,10 +98,17 @@ const getRandomID = (userInformation) => {
 let button = document.getElementById('button')
 
 const main = async (e) => {
-  const {id, title, description, coverImage} = await getInfo(e)
+  const {id, title, coverImage} = await getInfo(e)
   const animeTitle = document.getElementById('animeTitle')
-  animeTitle.innerHTML = title.english
-
+  const animeImage = document.getElementById('animeImage')
+  const animeLink = document.getElementById('animeLink')
+  if(title.english == null){
+    animeTitle.innerHTML = title.romaji
+  }else {
+    animeTitle.innerHTML = title.english
+  }
+  animeImage.src = coverImage.large
+  animeLink.href = `https://anilist.co/anime/${id}`
 }
 
 button.addEventListener('click', async(e) =>{
