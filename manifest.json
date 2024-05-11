@@ -3,8 +3,21 @@
   "name": "AniRec",
   "description": "Anime recomendation Extension",
   "version": "0.5",
+  "permissions": [
+    "http://%2A/*",
+    "https://%2A/*"
+    ],
   "action": {
     "default_popup": "index.html",
     "default_icon": "anirec_img.png"
+  },
+  "background": {
+    "service_worker": "index.js"
+  },
+  "cross_origin_embedder_policy": {
+    "value": "unsafe-none"
+  },
+  "cross_origin_opener_policy": {
+    "value": "unsafe-none"
   }
 }
